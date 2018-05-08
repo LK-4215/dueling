@@ -21,19 +21,24 @@
 			Table::setPlayerCurrentHealth($this);
 			
 		}
-		public function show($smarty, $type){
-			$smarty->assign('name', $this->name);
-			$smarty->assign('damage', $this->damage);
-			$smarty->assign('currentHealthPercent', $this->current_health / $this->health * 100);
-			$smarty->assign('currentHealth', $this->current_health);
-			$smarty->assign('health', $this->health);
-			if($type == 'o'){
-				$smarty->assign('nameField', "Имя противника");
+		public function show($type){
+                    echo "<div style = 'border: 2px solid black; width:320px; margin-bottom: 5px; padding: 5px'>";
+                    if($type == 'o'){
+                            $nameField = "Имя противника";
 			}
 			else if ($type == 's'){
-				$smarty->assign('nameField', "Ваше имя");
+                            $nameField = "Ваше имя";
 			}
-			$smarty->display('player_info.tpl');
+                    echo "<p>$nameField:$this->name</p>";
+                    echo "<p>Урон:$this->damage<p>";
+                    $currentHealthPercent = $this->current_health / $this->health * 100;
+                    echo "<div style = 'height: 20px; background:gray;'>
+                            <div style = 'background:red; width:$currentHealthPercent%; height: 20px;'></div>
+                        </div>
+                        <div>
+		           $this->current_health \ $this->health
+                        </div>"
+                            . "</div>";
 		}
 	}
 	

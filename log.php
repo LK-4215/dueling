@@ -13,15 +13,15 @@
 			//print_r($this->logArray);
 		}
 		public function getLogs(){
-			return $this->logArray();
+			return $this->logArray;
 		}
-		public function show($smarty){
-			$smarty->display("log_begin.tpl");
+		public function show(){
+			echo "<div style='overflow: scroll; height:80px; width:320px'>";
 			for($i = 0; $i<$this->index; $i++){
-				$smarty->assign("logstring", $this->logArray[$i]);
-				$smarty->display("logstrings.tpl");
+                                $str = $this->logArray[$i];
+				echo "<p style = 'margin:0px;'>$str</p>";
 			}
-			$smarty->display("log_end.tpl");
+			echo "</div>";
 		}
 	}
 ?>

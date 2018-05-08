@@ -1,5 +1,5 @@
 <?php
-	require_once ('C:\xampp\htdocs\Dueling\Table.php');
+	require_once 'table_class.php';
 	scriptTimer::startTime();
 	
 	session_start();

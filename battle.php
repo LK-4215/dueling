@@ -1,5 +1,5 @@
 <?php
-	require_once ('C:\xampp\htdocs\Dueling\Table.php');
+	require_once 'table_class.php';
 	//require_once ('C:\xampp\htdocs\Dueling\player.php');
 	class Battle{
 		private $player1, $player2, $battle;
@@ -29,12 +29,12 @@
 				header("refresh:0; url=win.php");
 			}
 		}
-		public function show($smarty){
+		public function show(){
 			$logInfo = Table::getLogInfo($this->player1->id, $this->battle);
-			$this->player2->show($smarty, 'o');
-			$this->player1->show($smarty, 's');
+			$this->player2->show('o');
+			$this->player1->show('s');
 			if($logInfo){
-				$logInfo->show($smarty);
+				$logInfo->show();
 			}
 		}
 	}
@@ -45,7 +45,7 @@
 	if(isset($_POST['attack'])){
 		$battle->attack();
 	}
-	$battle->show($smarty);
+	$battle->show();
 	scriptTimer::endTime();
 	echo scriptTimer::getTime();
 	Table::showQueries();	
